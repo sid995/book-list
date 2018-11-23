@@ -6,32 +6,33 @@ class AddBook extends Component {
   displayAuthors() {
     var data = this.props.data
     if (data.loading) {
-      return <option disabled>Loading authors...</option>
+      return <option disabled>Loading Authors...</option>
     } else {
-      return data.authors.map(author => {
-        return (
-          <option key={author.id} value={author.id}>
+      return (
+        data.authors &&
+        data.authors.map(author => (
+          <option key={author.id} value={author.value}>
             {author.name}
           </option>
-        )
-      })
+        ))
+      )
     }
   }
   render() {
     return (
       <form id="add-book">
         <div className="field">
-          <label>Book Name: </label>
+          <label>Book name:</label>
           <input type="text" />
         </div>
         <div className="field">
-          <label>Genre: </label>
+          <label>Genre:</label>
           <input type="text" />
         </div>
         <div className="field">
-          <label>Author: </label>
+          <label>Author:</label>
           <select>
-            <option>Select Authors</option>
+            <option>Select author</option>
             {this.displayAuthors()}
           </select>
         </div>
